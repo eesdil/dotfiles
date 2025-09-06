@@ -1,0 +1,16 @@
+# Ignore sensitive files
+**/id_rsa
+**/id_ed25519
+**/id_*
+**/*.pem
+**/*.key
+**/*.srl
+**/*.crt
+**/*.pub
+**/known_hosts
+**/authorized_keys
+# Ignore auth tokens
+**/*.token
+# Ignore macOS system files
+.DS_Store
+

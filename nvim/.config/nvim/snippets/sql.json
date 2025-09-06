@@ -1,0 +1,9 @@
+{
+  "Whitelist": {
+    "prefix": "white",
+    "body": [
+      "INSERT INTO \"Whitelist\" (id, identifier) VALUES (uuid_generate_v4(), '$1') ON CONFLICT DO NOTHING;"
+    ],
+    "description": "Create whitelist insert query"
+  }
+}

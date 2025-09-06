@@ -1,0 +1,86 @@
+{
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook"
+  },
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "bash",
+      "icon": "terminal-bash",
+      "args": ["-i"]
+    }
+  },
+  "workbench.sideBar.location": "right",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "extensions.ignoreRecommendations": false,
+  "diffEditor.renderSideBySide": true,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.tsserver.log": "off",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "search.exclude": {
+    "**/dist": true
+  },
+  "files.exclude": {
+    "**/.sourcemaps": true,
+    "**/build": true,
+    "**/plugins": true
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "yaml.format.bracketSpacing": false,
+  "typescript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.variableTypes.enabled": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "redhat.telemetry.enabled": false,
+  "typescript.referencesCodeLens.enabled": true,
+  "files.associations": {
+    "*.yaml": "yaml"
+  },
+  "git.autofetch": true,
+  "powermode.enabled": true,
+  "powermode.shake.enabled": false,
+  "workbench.colorTheme": "GitHub Dark Default",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "git.confirmForcePush": false,
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "gitlens.views.contributors.showStatistics": true,
+  "workbench.startupEditor": "none",
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "editor.inlineSuggest.enabled": true,
+  "workbench.editor.revealIfOpen": true,
+  "terminal.integrated.env.linux": {},
+  "console-ninja.featureSet": "Community",
+  "editor.minimap.enabled": false,
+  "terminal.integrated.env.osx": {},
+  "githubPullRequests.remotes": ["origin"],
+  "sqltools.connections": [],
+  "terminal.integrated.suggest.enabled": true,
+  "docker.extension.enableComposeLanguageServer": false,
+  "github.copilot.nextEditSuggestions.enabled": true
+}
