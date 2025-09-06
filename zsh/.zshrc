@@ -1,11 +1,14 @@
-PATH="$(brew --prefix)/opt/python@3/libexec/bin:$PATH"
+# Amazon Q pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
+HOMEBREW_PREFIX="/opt/homebrew"
+PATH="$HOMEBREW_PREFIX/opt/python@3/libexec/bin:$PATH"
+PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/opt/node@22/bin:$PATH"
+PATH="$HOMEBREW_PREFIX/opt/libpq/bin:$PATH"
 PATH="$PATH:$HOME/.local/bin"
 
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-PATH=$HOME/.rd/bin:$PATH
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-#
 export PATH
+
+export XDG_CONFIG_HOME="$HOME/.config"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -64,6 +67,9 @@ eval "$(atuin init zsh)"
 
 eval "$(starship init zsh)"
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # custom
 
 atuin_cwd_run_widget() {
@@ -93,6 +99,27 @@ atuin_cwd_run_prevdir() {
 }
 zle -N atuin_cwd_run_prevdir
 
+my_pr_s() {
+  local selected cmd
+  selected=$(az repos pr list --status active --reviewer $AZURE_USER_EMAIL --query "[].{ID:pullRequestId,Title:title,Commit:lastMergeSourceCommit.commitId,Author:createdBy.displayName,Link:url}" --output tsv | fzf -d "\t")
+  commit=$(cut -f3 <<< "$selected")
+  if [[ -n "$commit" ]]; then
+   nvim -c "DiffviewOpen origin/master..$commit"
+  fi
+}
+alias my="my_pr_s"
+
+# Save current directory whenever it changes
+function chpwd() {
+  echo "$PWD" > ~/.last_dir
+}
+
+# Restore last directory on shell start
+if [ -f ~/.last_dir ]; then
+  cd "$(cat ~/.last_dir)"
+fi
+
+alias docker="podman"
 alias ls="eza"
 
 # Keys
@@ -101,3 +128,5 @@ bindkey '^O' atuin_cwd_run_widget
 bindkey '^r' atuin_cwd_run_prevdir
 bindkey '^[[Z' autosuggest-accept
 
+# Amazon Q post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"

@@ -4,4 +4,6 @@ PATH="$HOME/.rd/bin:$PATH"
 
 PATH=~/.console-ninja/.bin:$PATH
 
+alias docker="podman"
+
 export PATH
