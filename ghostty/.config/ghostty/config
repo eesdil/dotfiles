@@ -29,7 +29,7 @@ font-family = JetBrainsMono Nerd Font Mono
 
 bold-is-bright = true
 
-theme = tokyonight_night 
+theme = TokyoNight Night
 keybind = shift+enter=text:Y
 
 window-height = 40

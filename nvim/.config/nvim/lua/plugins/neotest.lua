@@ -32,15 +32,15 @@ return {
           require("neotest-python")({
             python = ".venv/bin/python",
           }),
-          require("neotest-vitest")({
-            -- Filter directories when searching for test files. Useful in large projects (see Filter directories notes).
-            -- cwd = get_root_dir(),
-            cwd = "/Users/ckorosi002/Projects/Dexter/dexter-apps",
-            filter_dir = function(name, rel_path, root)
-              local excluded = { dist = true, node_modules = true, build = true }
-              return not excluded[name]
-            end,
-          }),
+          -- require("neotest-vitest")({
+          --   -- Filter directories when searching for test files. Useful in large projects (see Filter directories notes).
+          --   -- cwd = get_root_dir(),
+          --   cwd = "/Users/ckorosi002/Projects/Dexter/dexter-apps",
+          --   filter_dir = function(name, rel_path, root)
+          --     local excluded = { dist = true, node_modules = true, build = true }
+          --     return not excluded[name]
+          --   end,
+          -- }),
           require("neotest-jest")({
             -- jestCommand = "yarn nx test",
             -- jestArguments = function(defaultArguments, context)

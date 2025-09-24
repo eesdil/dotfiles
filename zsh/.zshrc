@@ -83,7 +83,8 @@ atuin_cwd_run_widget() {
     else
       BUFFER="cd $cwd; $cmd"
     fi
-    zle accept-line
+    # zle accept-line
+    zle end-of-line;
   fi
 }
 zle -N atuin_cwd_run_widget
@@ -94,7 +95,7 @@ atuin_cwd_run_prevdir() {
   cmd=${selected}
   if [[ -n "$cmd" ]]; then
     BUFFER="$cmd"
-    zle accept-line
+    zle end-of-line;
   fi
 }
 zle -N atuin_cwd_run_prevdir
@@ -119,8 +120,7 @@ if [ -f ~/.last_dir ]; then
   cd "$(cat ~/.last_dir)"
 fi
 
-alias docker="podman"
-alias ls="eza"
+alias ls="eza -all --icons=always"
 
 # Keys
 
