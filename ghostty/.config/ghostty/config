@@ -35,6 +35,6 @@ keybind = shift+enter=text:Y
 window-height = 40
 window-width = 140
 
-background-opacity = 0.93
+background-opacity = 1
 window-padding-x = 8
 

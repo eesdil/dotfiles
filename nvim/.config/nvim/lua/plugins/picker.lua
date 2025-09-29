@@ -126,6 +126,15 @@ return {
       },
       picker = {
         layout = "dropdown",
+        sources = {
+          explorer = {
+            layout = {
+              layout = {
+                position = "right",
+              },
+            },
+          },
+        },
         formatters = {
           file = {
             filename_first = true,
