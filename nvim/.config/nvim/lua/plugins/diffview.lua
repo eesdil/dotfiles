@@ -1,3 +1,11 @@
 return {
-  { "sindrets/diffview.nvim" },
+  {
+    "sindrets/diffview.nvim",
+    opts = {
+      file_panel = {
+        listing_style = "list",
+        position = "right",
+      },
+    },
+  },
 }

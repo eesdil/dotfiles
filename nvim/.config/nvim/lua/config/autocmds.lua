@@ -32,3 +32,14 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("t", "<C-t>", "<cmd>FloatermNew<CR>", { noremap = true, silent = true })
   end,
 })
+
+vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#24283b", bg = "#1a1b26" })
+vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#23394c" })
+vim.api.nvim_set_hl(0, "DiffText", { bg = "#33406b" })
+vim.api.nvim_set_hl(0, "Folded", { bg = "#252a40" })
+
+vim.opt.foldtext = "v:lua.custom_fold_text()"
+function _G.custom_fold_text()
+  local line = vim.fn.getline(vim.v.foldstart)
+  return line .. " ••• "
+end
