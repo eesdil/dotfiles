@@ -1,6 +1,5 @@
 tap "azure/kubelogin"
 tap "homebrew/services"
-tap "jandedobbeleer/oh-my-posh"
 tap "pantsbuild/tap"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
@@ -10,14 +9,8 @@ brew "azure-cli"
 brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
-# Load/unload environment variables based on $PWD
-brew "direnv"
-# Modern, maintained replacement for ls
-brew "eza"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# Command-line fuzzy finder written in Go
-brew "fzf"
 # GitHub command-line tool
 brew "gh"
 # Syntax-highlighting pager for git and diff output
@@ -48,8 +41,6 @@ brew "lolcat"
 brew "luarocks"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Platform built on V8 to build network applications
-brew "node@22"
 # Password manager
 brew "pass"
 # Tool for managing OCI containers and pods
@@ -60,8 +51,6 @@ brew "pulumi"
 brew "redis"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Cross-shell prompt for astronauts
-brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
 # Traceroute implementation using TCP packets
@@ -72,8 +61,6 @@ brew "telnet"
 brew "terraform"
 # Internet file retriever
 brew "wget"
-# Shell extension to navigate your filesystem faster
-brew "zoxide"
 # Real-time type-ahead completion for Zsh
 brew "zsh-autocomplete"
 # Fish-like fast/unobtrusive autosuggestions for zsh
@@ -82,8 +69,6 @@ brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 # A Kubernetes credential (exec) plugin implementing azure authentication
 brew "azure/kubelogin/kubelogin"
-# Prompt theme engine for any shell
-brew "jandedobbeleer/oh-my-posh/oh-my-posh"
 # Open source IDE for exploring and testing APIs
 cask "bruno"
 # Terminal emulator that uses platform-native UI and GPU acceleration

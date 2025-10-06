@@ -125,7 +125,7 @@ return {
         },
       },
       picker = {
-        layout = "dropdown",
+        -- layout = "dropdown",
         sources = {
           explorer = {
             layout = {

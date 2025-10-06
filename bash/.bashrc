@@ -4,6 +4,19 @@ PATH="$HOME/.rd/bin:$PATH"
 
 PATH=~/.console-ninja/.bin:$PATH
 
-alias docker="podman"
-
 export PATH
+
+HISTCONTROL=ignoreboth
+shopt -s histappend
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# Apps
+
+source <(fzf --bash)
+eval "$(mise activate bash)"
+eval "$(starship init bash)"
+eval "$(zoxide init bash)"
+
+alias docker="podman"
+alias ls="eza -all --icons=always"

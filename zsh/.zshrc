@@ -50,25 +50,13 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-li
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 
-# zoxide
-
-eval "$(zoxide init zsh)"
-
-# fzf
+# Apps
 
 source <(fzf --zsh)
-
-# atuin
-
 export ATUIN_NOBIND="true"
 eval "$(atuin init zsh)"
-
-# starship
-
 eval "$(starship init zsh)"
-
-# direnv
-eval "$(direnv hook zsh)"
+eval "$(zoxide init zsh)"
 
 # custom
 
