@@ -1,5 +1,7 @@
 [tools]
-starship = "latest"
 zoxide = "latest"
 eza = "latest"
 fzf = "latest"
+atuin = "latest"
+starship = "latest"
+node = "22"

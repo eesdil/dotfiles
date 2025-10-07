@@ -2,17 +2,17 @@
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 HOMEBREW_PREFIX="/opt/homebrew"
 PATH="$HOMEBREW_PREFIX/opt/python@3/libexec/bin:$PATH"
-PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/opt/node@22/bin:$PATH"
+PATH="$HOMEBREW_PREFIX/bin:$PATH"
 PATH="$HOMEBREW_PREFIX/opt/libpq/bin:$PATH"
 PATH="$PATH:$HOME/.local/bin"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/ckorosi002/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 export PATH
 
 export XDG_CONFIG_HOME="$HOME/.config"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
@@ -52,6 +52,7 @@ ZSH_AUTOSUGGEST_USE_ASYNC=true
 
 # Apps
 
+eval "$(mise activate zsh)"
 source <(fzf --zsh)
 export ATUIN_NOBIND="true"
 eval "$(atuin init zsh)"
@@ -118,4 +119,3 @@ bindkey '^[[Z' autosuggest-accept
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
-

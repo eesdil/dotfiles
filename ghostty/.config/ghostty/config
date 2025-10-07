@@ -22,7 +22,7 @@
 
 mouse-hide-while-typing = true
 
-font-size = 10
+font-size = 12
 
 font-family = JetBrainsMono Nerd Font Mono
 # font-family = JetBrainsMono Nerd Font
@@ -32,9 +32,9 @@ bold-is-bright = true
 theme = TokyoNight Night
 keybind = shift+enter=text:Y
 
-window-height = 40
+window-height = 45
 window-width = 140
 
 background-opacity = 1
-window-padding-x = 8
+window-padding-x = 6
 
