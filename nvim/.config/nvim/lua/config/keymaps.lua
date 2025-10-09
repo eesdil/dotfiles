@@ -10,7 +10,7 @@ vim.api.nvim_set_keymap(
 )
 
 -- vim.api.nvim_set_keymap("n", "<leader>gs", "<cmd>DiffviewOpen<cr>", { silent = true, noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>gs", "<cmd>Neogit<cr>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>gs", "<cmd>Neogit kind=floating<cr>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>gc", "<cmd>Neogit commit<cr>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>gh", "<cmd>DiffviewFileHistory<cr>", { silent = true, noremap = true })
 
