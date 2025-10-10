@@ -34,7 +34,8 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#24283b", bg = "#1a1b26" })
-vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#23394c" })
+vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#202d38" })
 vim.api.nvim_set_hl(0, "DiffText", { bg = "#33406b" })
 vim.api.nvim_set_hl(0, "Folded", { bg = "#171822" })
 vim.api.nvim_set_hl(0, "CursorLine", { bg = "#1e202e" })
+vim.api.nvim_set_hl(0, "DiffviewDiffAddAsDelete", { bg = "#34222b" })
