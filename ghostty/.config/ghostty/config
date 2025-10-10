@@ -24,13 +24,12 @@ mouse-hide-while-typing = true
 
 font-size = 12
 
-font-family = JetBrainsMono Nerd Font Mono
-# font-family = JetBrainsMono Nerd Font
-
-bold-is-bright = true
+# font-family = JetBrainsMono Nerd Font Mono
 
 theme = TokyoNight Night
-keybind = shift+enter=text:Y
+
+# currently it is more annoying than useful
+# keybind = shift+enter=text:Y
 
 window-height = 45
 window-width = 140
