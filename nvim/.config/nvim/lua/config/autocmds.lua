@@ -24,6 +24,8 @@ vim.api.nvim_create_autocmd("BufRead", {
   end,
 })
 
+-- make floarterm keys
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "floaterm",
   callback = function(event)
@@ -33,9 +35,37 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- change colors for diffing
+
 vim.api.nvim_set_hl(0, "DiffDelete", { fg = "#24283b", bg = "#1a1b26" })
 vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#202d38" })
 vim.api.nvim_set_hl(0, "DiffText", { bg = "#33406b" })
 vim.api.nvim_set_hl(0, "Folded", { bg = "#171822" })
 vim.api.nvim_set_hl(0, "CursorLine", { bg = "#1e202e" })
 vim.api.nvim_set_hl(0, "DiffviewDiffAddAsDelete", { bg = "#34222b" })
+
+-- Remove cursor line when window is not focused
+
+local cl_var = "auto_cursorline"
+
+vim.api.nvim_create_autocmd({ "WinEnter", "FocusGained" }, {
+  group = vim.api.nvim_create_augroup("enable_auto_cursorline", { clear = true }),
+  callback = function()
+    local ok, cl = pcall(vim.api.nvim_win_get_var, 0, cl_var)
+    if ok and cl then
+      vim.api.nvim_win_del_var(0, cl_var)
+      vim.o.cursorline = true
+    end
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "WinLeave", "FocusLost" }, {
+  group = vim.api.nvim_create_augroup("disable_auto_cursorline", { clear = true }),
+  callback = function()
+    local cl = vim.o.cursorline
+    if cl then
+      vim.api.nvim_win_set_var(0, cl_var, cl)
+      vim.o.cursorline = false
+    end
+  end,
+})

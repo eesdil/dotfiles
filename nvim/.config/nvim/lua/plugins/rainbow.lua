@@ -1,5 +1,5 @@
 return {
-  -- {
-  --   "mrjones2014/nvim-ts-rainbow",
-  -- },
+  {
+    "HiPhish/rainbow-delimiters.nvim",
+  },
 }

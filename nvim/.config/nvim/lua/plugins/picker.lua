@@ -87,6 +87,7 @@ function filename(item, picker)
   -- end
   return ret
 end
+
 local function file2(item, picker)
   ---@type snacks.picker.Highlight[]
   local original = Snacks.picker.format.filename
@@ -125,6 +126,16 @@ return {
         },
       },
       picker = {
+        win = {
+          input = {
+            keys = {
+              ["J"] = { "preview_scroll_down", mode = { "i", "n" } },
+              ["K"] = { "preview_scroll_up", mode = { "i", "n" } },
+              ["H"] = { "preview_scroll_left", mode = { "i", "n" } },
+              ["L"] = { "preview_scroll_right", mode = { "i", "n" } },
+            },
+          },
+        },
         -- layout = "dropdown",
         sources = {
           explorer = {
@@ -159,9 +170,10 @@ return {
         "<leader><space>",
         function()
           Snacks.picker.smart({
-            multi = { "buffers", "recent", "git_files" },
+            multi = { "recent", "buffers", "git_files" },
             format = file2, -- use `file` format for all sources
             matcher = {
+              history_bonus = true,
               cwd_bonus = true, -- boost cwd matches
               frecency = true, -- use frecency boosting
               sort_empty = true, -- sort even when the filter is empty
