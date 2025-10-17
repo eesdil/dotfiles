@@ -7,6 +7,9 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
+-- disable too much error logs in the buffer
+vim.diagnostic.config({ virtual_text = false })
+
 local function get_last_two_parts(path)
   local parts = vim.split(path, "/")
   return table.concat({ parts[#parts - 1], parts[#parts] }, "/")
