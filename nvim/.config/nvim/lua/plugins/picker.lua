@@ -140,6 +140,9 @@ return {
         -- layout = "dropdown",
         sources = {
           explorer = {
+            hidden = true,
+            ignored = true,
+            auto_close = false,
             layout = {
               layout = {
                 position = "right",
