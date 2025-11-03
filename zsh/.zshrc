@@ -1,5 +1,3 @@
-# Amazon Q pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 HOMEBREW_PREFIX="/opt/homebrew"
 PATH="$HOMEBREW_PREFIX/opt/python@3/libexec/bin:$PATH"
 PATH="$HOMEBREW_PREFIX/bin:$PATH"
@@ -9,8 +7,6 @@ PATH="$PATH:$HOME/.local/bin"
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/Users/ckorosi002/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
-
-export PATH
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -110,6 +106,3 @@ alias knx="kill -9 $(ps aux | grep -e "nx.*serve" | awk '{ print $2 }')"
 bindkey '^O' atuin_cwd_run_widget
 bindkey '^r' atuin_cwd_run_prevdir
 bindkey '^[[Z' autosuggest-accept
-
-# Amazon Q post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
