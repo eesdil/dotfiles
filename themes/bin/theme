@@ -1,0 +1,126 @@
+#!/usr/bin/env bash
+# theme — switch shared CLI themes across ghostty, tmux, nvim, herdr, …
+set -euo pipefail
+
+# Resolve symlinks so ~/.local/bin/theme still finds themes/lib
+_SOURCE="${BASH_SOURCE[0]}"
+while [[ -L "$_SOURCE" ]]; do
+  _DIR="$(cd "$(dirname "$_SOURCE")" && pwd)"
+  _SOURCE="$(readlink "$_SOURCE")"
+  [[ "$_SOURCE" != /* ]] && _SOURCE="$_DIR/$_SOURCE"
+done
+ROOT="$(cd "$(dirname "$_SOURCE")/.." && pwd)"
+unset _SOURCE _DIR
+# shellcheck source=../lib/common.sh
+source "$ROOT/lib/common.sh"
+
+usage() {
+  cat <<'EOF'
+Usage:
+  theme                 Interactive fzf picker
+  theme <name>          Apply theme
+  theme list            List available themes
+  theme current         Print active theme
+  theme help            Show this help
+
+Themes live in ~/.dotfiles/themes/palettes/.
+Per-app overrides: ~/.dotfiles/themes/overrides/<name>/<app>.*
+Add an app: drop apps/<name>.sh with an apply() function.
+EOF
+}
+
+apply_theme() {
+  local id="$1"
+  local app_script app_name
+
+  if ! theme_exists "$id"; then
+    echo "theme: unknown theme '$id'" >&2
+    echo "Available:" >&2
+    theme_list | sed 's/^/  /' >&2
+    return 1
+  fi
+
+  theme_load_palette "$id"
+  theme_set_current "$id"
+  echo "Applying theme: $id"
+
+  shopt -s nullglob
+  for app_script in "$APPS_DIR"/*.sh; do
+    app_name="$(basename "$app_script" .sh)"
+    # shellcheck disable=SC1090
+    source "$app_script"
+    if declare -f apply >/dev/null; then
+      echo "[$app_name]"
+      if apply "$id"; then
+        theme_log "ok"
+      else
+        theme_warn "$app_name failed"
+      fi
+      unset -f apply 2>/dev/null || true
+    else
+      theme_warn "$app_name has no apply()"
+    fi
+  done
+  shopt -u nullglob
+
+  echo "Done. Active theme: $(theme_current)"
+}
+
+pick_theme() {
+  local current choices selection
+  current="$(theme_current || true)"
+
+  if ! command -v fzf >/dev/null 2>&1; then
+    echo "theme: fzf not found; pass a theme name explicitly" >&2
+    theme_list
+    return 1
+  fi
+
+  choices="$(
+    theme_list | while read -r name; do
+      if [[ "$name" == "$current" ]]; then
+        printf '%s  (current)\n' "$name"
+      else
+        printf '%s\n' "$name"
+      fi
+    done
+  )"
+
+  selection="$(
+    printf '%s\n' "$choices" | fzf \
+      --prompt='theme> ' \
+      --header='Select a theme (enter to apply)' \
+      --height=40% \
+      --reverse \
+      --ansi
+  )" || true
+
+  [[ -z "${selection:-}" ]] && return 1
+  selection="${selection%% *}"
+  apply_theme "$selection"
+}
+
+main() {
+  local cmd="${1:-}"
+
+  case "$cmd" in
+    "" )
+      pick_theme
+      ;;
+    list|-l|--list)
+      theme_list
+      ;;
+    current)
+      theme_current
+      echo
+      ;;
+    help|-h|--help)
+      usage
+      ;;
+    *)
+      apply_theme "$cmd"
+      ;;
+  esac
+}
+
+main "$@"

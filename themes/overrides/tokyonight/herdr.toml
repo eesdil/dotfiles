@@ -1,0 +1,5 @@
+[theme]
+name = "tokyo-night"
+
+[theme.custom]
+panel_bg = "reset"

@@ -1,16 +1,16 @@
-local colors = require("tokyonight.colors").setup()
-local util = require("tokyonight.util")
+local ok, colors_mod = pcall(require, "tokyonight.colors")
+local util_ok, util = pcall(require, "tokyonight.util")
 
 return {
   {
     "petertriho/nvim-scrollbar",
     config = function()
-      require("scrollbar").setup({
-        handle = {
-          blend = 40,
-          color = util.lighten(colors.bg_highlight, 0.8),
-        },
-      })
+      local opts = { handle = { blend = 40 } }
+      if ok and util_ok then
+        local colors = colors_mod.setup()
+        opts.handle.color = util.lighten(colors.bg_highlight, 0.8)
+      end
+      require("scrollbar").setup(opts)
     end,
   },
 }

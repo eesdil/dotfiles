@@ -92,15 +92,15 @@ atuin_cwd_run_prevdir() {
 }
 zle -N atuin_cwd_run_prevdir
 
-# Save current directory whenever it changes
-function chpwd() {
-  echo "$PWD" > ~/.last_dir
-}
-
-# Restore last directory on shell start
-if [ -f ~/.last_dir ]; then
-  cd "$(cat ~/.last_dir)"
-fi
+# # Save current directory whenever it changes
+# function chpwd() {
+#   echo "$PWD" > ~/.last_dir
+# }
+#
+# # Restore last directory on shell start
+# if [ -f ~/.last_dir ]; then
+#   cd "$(cat ~/.last_dir)"
+# fi
 
 alias ls="eza -all --icons=always"
 alias knx="kill -9 $(ps aux | grep -e "nx.*serve" | awk '{ print $2 }')"
@@ -113,3 +113,6 @@ bindkey '^[[Z' autosuggest-accept
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+
+# Added by Antigravity
+export PATH="/Users/kcs/.antigravity/antigravity/bin:$PATH"

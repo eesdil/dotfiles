@@ -1,0 +1,20 @@
+[theme]
+name = "terminal"
+
+[theme.custom]
+panel_bg     = "reset"
+accent       = "#0055AA"
+surface0     = "#999999"
+surface1     = "#BBBBBB"
+surface_dim  = "#888888"
+overlay0     = "#555555"
+overlay1     = "#0055AA"
+text         = "#000000"
+subtext0     = "#555555"
+mauve        = "#AA00AA"
+green        = "#00AA00"
+yellow       = "#FF8800"
+red          = "#DD0000"
+blue         = "#0055AA"
+teal         = "#00AAAA"
+peach        = "#FF8800"

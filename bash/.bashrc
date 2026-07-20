@@ -20,3 +20,4 @@ eval "$(zoxide init bash)"
 
 alias docker="podman"
 alias ls="eza -all --icons=always"
+. "$HOME/.cargo/env"
