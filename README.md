@@ -23,3 +23,14 @@ theme current
 
 - **New theme:** add `themes/palettes/<name>.toml` plus optional files under `themes/overrides/<name>/`.
 - **New app:** add `themes/apps/<app>.sh` defining `apply <theme_id>`.
+
+## Pi: openspec-loop (full package)
+
+OpenSpec **plan → gated apply** for Pi lives under `pi-packages/openspec-loop/`.
+
+```sh
+# in the target project
+~/.dotfiles/pi-packages/openspec-loop/bin/setup.sh .
+```
+
+In Pi: `/openspec-feature` (plan then apply), `/openspec-plan`, `/openspec-loop`.

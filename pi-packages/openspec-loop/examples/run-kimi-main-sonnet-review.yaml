@@ -1,0 +1,13 @@
+# Example saved run — copy to a project as:
+#   .pi/openspec-loop/runs/kimi-main-sonnet-review.yaml
+#
+# Or create interactively via /openspec-loop → Save as named template
+
+name: kimi-main-sonnet-review
+created_at: 2026-07-25T00:00:00.000Z
+mode: apply-loop
+main_model: ollama/kimi-k2.5:cloud
+thinking_level: medium
+gate_models:
+  review: anthropic/claude-sonnet-4-5
+notes: "Bakeoff: Kimi implements, Sonnet reviews"

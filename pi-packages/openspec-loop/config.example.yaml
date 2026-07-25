@@ -1,0 +1,52 @@
+# Select at runtime with /openspec-loop, or pin a default:
+# mode: stop-gate
+# mode: apply-loop
+mode: ask
+
+change: auto
+max_iterations: 40
+on_gate_fail: continue # continue | stop | ask
+
+defaults:
+  # Optional default main model (provider/id). Still confirmed at start.
+  # main_model: ollama/kimi-k2.5:cloud
+  confirm_main_model: true # ask "is this the correct agent/model?"
+  ask_save_template: true # offer to save the run setup as YAML
+
+gates:
+  - name: unit-tests
+    type: shell
+    command: npm test
+    required: true
+    timeout: 600
+
+  - name: review
+    type: agent
+    required: true
+    timeout: 600
+    # Default model if you skip picking at start (provider/id):
+    # model: anthropic/claude-sonnet-4-5
+    tools:
+      - read
+      - grep
+      - find
+      - ls
+      - bash
+    prompt: |
+      Review the current uncommitted changes for the active OpenSpec change.
+      Verify tasks.md progress is honest and that critical bugs/security issues
+      are not being introduced. Be strict.
+
+policy:
+  never_mark_done_without_gates: true
+  one_task_per_turn: true
+  max_stop_retries: 3
+
+# Named run templates for LLM bakeoffs (also saved under .pi/openspec-loop/runs/)
+templates:
+  # example-kimi-main-sonnet-review:
+  #   main_model: ollama/kimi-k2.5:cloud
+  #   mode: apply-loop
+  #   gate_models:
+  #     review: anthropic/claude-sonnet-4-5
+  #   notes: "baseline bakeoff"

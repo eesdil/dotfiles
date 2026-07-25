@@ -1,0 +1,36 @@
+{
+  "name": "openspec-loop",
+  "version": "0.2.0",
+  "description": "Full OpenSpec plan → controlled apply loop for Pi (models, gates, YAML run templates).",
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "openspec",
+    "agent-loop"
+  ],
+  "bin": {
+    "openspec-loop-setup": "./bin/setup.sh"
+  },
+  "pi": {
+    "extensions": [
+      "./extensions/openspec-loop.ts"
+    ],
+    "prompts": [
+      "./prompts"
+    ],
+    "skills": [
+      "./skills"
+    ]
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": ">=0.74.0"
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-coding-agent": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "yaml": "^2.8.2"
+  }
+}

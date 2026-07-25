@@ -13,4 +13,7 @@
 **/*.token
 # Ignore macOS system files
 .DS_Store
+# Package install artifacts
+**/node_modules/
+**/package-lock.json
 
